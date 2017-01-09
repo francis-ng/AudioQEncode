@@ -1,0 +1,33 @@
+﻿<Window x:Class="AudioQEncode.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:AudioQEncode"
+		xmlns:utils="clr-namespace:AudioQEncode.Utils"
+		mc:Ignorable="d"
+		MouseRightButtonUp="openContextMenu"
+		AllowDrop="True" DragEnter="window_DragEnter" Drop="window_Drop"
+		Title="AudioQEncode" Height="150" Width="150" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen" Foreground="#FFF32121">
+	<Window.CommandBindings>
+		<CommandBinding Command="utils:Commands.Exit"  CanExecute="ExitCommand_CanExecute" Executed="ExitCommand_Executed" />
+	</Window.CommandBindings>
+	<Window.Resources>
+		<ContextMenu x:Key="rClickMenu">
+			<MenuItem Header="Encoder Settings" Click="OpenSettings" />
+			<Separator />
+			<!--<MenuItem Header="About" />-->
+			<!--<MenuItem Command="utils:Commands.Exit" />-->
+		</ContextMenu>
+	</Window.Resources>
+	<Grid x:Name="appGrid">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="15" />
+			<RowDefinition Height="15" />
+		</Grid.RowDefinitions>
+		<Label x:Name="txtDrop" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Drag file(s) here" />
+		<ProgressBar x:Name="prgTotal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" Width="144"/>
+		<ProgressBar x:Name="prgFile" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" Width="144"/>
+	</Grid>
+</Window>
